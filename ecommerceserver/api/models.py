@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class users(models.Model):
-    email=models.EmailField(max_length=200)
+    email=models.EmailField(max_length=200,unique=True)
     name=models.CharField(max_length=100)
     role=models.CharField(max_length=50 ,default='user')
 

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
-import { AuthContext } from "../pages/AuthProvider/AuthProvider";
+import { AuthContex } from "../AuthProvider/AuthProvider";
 import useAxiosSecure from "./useAxiosSecure";
 
 
@@ -8,7 +8,7 @@ import useAxiosSecure from "./useAxiosSecure";
 
 // Only logged-in users will see data
 const useUser = () => {
-    const { user, loading: authLoading,  } = useContext(AuthContext);
+    const { user, loading: authLoading,  } = useContext(AuthContex);
      const axiosSecure = useAxiosSecure()
 
     const { refetch, data: users = [], isLoading: queryLoading } = useQuery({
