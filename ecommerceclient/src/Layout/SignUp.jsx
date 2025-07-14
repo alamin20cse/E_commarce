@@ -5,13 +5,14 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import { AuthContex } from "../AuthProvider/AuthProvider";
-// import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+
 
 
 
 
 const SignUp = () => {
-    // const axiosPublic = useAxiosPublic();
+    const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContex);
     const navigate = useNavigate();
@@ -31,20 +32,20 @@ const SignUp = () => {
                     email: data.email
                 };
                 console.log(userInfo);
-                // axiosPublic.post('/api/users/', userInfo)
-                //     .then(res => {
-                //         if (res.data.insertedId) {
-                //            
-                //             Swal.fire({
-                //                 position: 'top-end',
-                //                 icon: 'success',
-                //                 title: 'User created successfully.',
-                //                 showConfirmButton: false,
-                //                 timer: 1500
-                //             });
-                //            
-                //         }
-                //     });
+                axiosPublic.post('/api/users/', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                           
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'User created successfully.',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                           
+                        }
+                    });
 
                  navigate('/');
                   reset();

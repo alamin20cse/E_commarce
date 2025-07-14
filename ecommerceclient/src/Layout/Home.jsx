@@ -1,10 +1,12 @@
 import React from 'react';
+import Bannar from '../Component/Bannar';
+import Category from '../Component/Category';
 
 const Home = () => {
     return (
         <div className='pt-20'>
-            <h1>this is home</h1>
-            <h1>abdc</h1>
+           <Bannar></Bannar>
+           <Category></Category>
             
             
         </div>
