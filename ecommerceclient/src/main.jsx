@@ -21,6 +21,7 @@ import {
   QueryClientProvider
 } from '@tanstack/react-query'
 import AllUsers from './Shared/Dashboard/Allusers.jsx';
+import Order from './Order/Order.jsx';
 
 const queryClient = new QueryClient()
 
@@ -41,10 +42,16 @@ const router = createBrowserRouter([
         path:'/login',
         element:<Login></Login>
       },
-      {
-        path:'addItems',
-        element:<AddItems></AddItems>
+      //  {
+      //   path:'/menu',
+      //   element:<Menu></Menu>
+      // },
+
+       {
+        path:'/order',
+        element:<Order></Order>
       },
+
     ]
   },
 

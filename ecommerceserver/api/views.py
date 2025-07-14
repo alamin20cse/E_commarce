@@ -2,8 +2,8 @@ from rest_framework import viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .Serializer import usersSerializer, menuSerializer
-from .models import users, menu
+from .Serializer import usersSerializer, menuSerializer,CartSerializer
+from .models import users, menu,Cart
 
 
 # ViewSet for all users
@@ -28,6 +28,12 @@ class usersViewSet(viewsets.ModelViewSet):
 class menuViewSet(viewsets.ModelViewSet):
     queryset = menu.objects.all()
     serializer_class = menuSerializer
+
+
+
+class cartViewSet(viewsets.ModelViewSet):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer
 
 
 # APIView for getting a single user by email

@@ -5,7 +5,7 @@ import useUser from "./useUser";
 
 
 const useAdmin = () => {
-  const [users, loading, refetch] =useUser()
+  const [users, loading,] =useUser()
   const [isAdmin, setIsAdmin] = useState(false);
   console.log(users);
 

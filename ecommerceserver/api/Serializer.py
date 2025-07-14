@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import users,menu  # তোমার মডেল ফাইল থেকে import
+from .models import users,menu,Cart # তোমার মডেল ফাইল থেকে import
 
 class usersSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,3 +12,7 @@ class menuSerializer(serializers.ModelSerializer):
         model = menu
         fields = '__all__' 
 
+class CartSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cart
+        fields = '__all__'
