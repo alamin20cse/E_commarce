@@ -17,16 +17,7 @@ const Order = () => {
     const initialIndex = categories.indexOf(category);
     const [tabIndex, setTabIndex] = useState(initialIndex);
     const [menu] = useMenu();
-    /*
-          Select a category
-                </option>
-                <option value="">Fashion</option>
-                <option value="">Electronics</option>
-                <option value="">HomeKitchen</option>
-                <option value="">Beauty</option>
-                <option value="">Stationery</option
-
-                */
+    
     
     const fashion = menu.filter(item => item.category === 'fashion');
     const electronics = menu.filter(item => item.category === 'electronics');

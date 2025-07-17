@@ -14,6 +14,10 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -135,3 +139,7 @@ CORS_ALLOWED_ORIGINS = [
 
 
 CORS_ALLOW_ALL_ORIGINS = True  # For development only
+
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51QoVkuEA4X6NHuos2SbSZmbjAZ6UxFwKwvPkLcIdtg0uUAyVaA3bbdcFvm0TsJicD1ezHytlUPflkQUm5un8CJoM00yyEjb3pv'

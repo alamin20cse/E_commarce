@@ -20,11 +20,11 @@ const CheckoutForm = () => {
     const [refetch,cart] = useCart();
     const navigate = useNavigate();
 
-    const totalPrice = cart.reduce((total, item) => total + item.price, 0)
+   const totalPrice = cart.reduce((total, item) => total + parseFloat(item.price), 0).toFixed(2);
 
     useEffect(() => {
         if (totalPrice > 0) {
-            axiosSecure.post('/create-payment-intent', { price: totalPrice })
+            axiosSecure.post('/api/create-payment-intent/', { price: totalPrice })
                 .then(res => {
                     console.log(res.data.clientSecret);
                     setClientSecret(res.data.clientSecret);
@@ -85,13 +85,14 @@ const CheckoutForm = () => {
                     email: user.email,
                     price: totalPrice,
                     transactionId: paymentIntent.id,
-                    date: new Date(), // utc date convert. use moment js to 
-                    cartIds: cart.map(item => item._id),
+                    date: new Date().toISOString(),
+ // utc date convert. use moment js to 
+                    cartIds: cart.map(item => item.id),
                     menuItemIds: cart.map(item => item.menuId),
                     status: 'pending'
                 }
 
-                const res = await axiosSecure.post('/payments', payment);
+                const res = await axiosSecure.post('/api/payments/', payment);
                 console.log('payment saved', res.data);
                 refetch();
                 if (res.data?.paymentResult?.insertedId) {
@@ -112,6 +113,7 @@ const CheckoutForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
+            <h1 className="text-xl font-bold py-20">Payment Amount : {totalPrice}</h1>
             <CardElement
                 options={{
                     style: {

@@ -25,3 +25,19 @@ class Cart(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     email = models.EmailField()
     added_at = models.DateTimeField(auto_now_add=True)
+
+
+
+ 
+
+class Payment(models.Model):
+    email = models.EmailField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    transactionId = models.CharField(max_length=100)
+    date = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=20, default='pending')
+    cartIds = models.JSONField(default=list)
+    menuItemIds = models.JSONField(default=list)
+
+   
+

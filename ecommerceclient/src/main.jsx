@@ -26,6 +26,8 @@ import Cart from './Shared/Dashboard/Cart.jsx';
 import Payment from './Shared/Dashboard/Payment/Payment.jsx';
 import ManageItems from './Shared/Dashboard/ManageItems/ManageItems.jsx';
 import UpdateItem from './Shared/Dashboard/UpdateItem/UpdateItem.jsx';
+import Menu from './Layout/Menu.jsx';
+import PaymentHistory from './Shared/Dashboard/PaymentHistory/PaymentHistory.jsx';
 
 const queryClient = new QueryClient()
 
@@ -46,10 +48,10 @@ const router = createBrowserRouter([
         path:'/login',
         element:<Login></Login>
       },
-      //  {
-      //   path:'/menu',
-      //   element:<Menu></Menu>
-      // },
+       {
+        path:'/menu',
+        element:<Menu></Menu>
+      },
 
        {
         path:'/order',
@@ -74,7 +76,10 @@ const router = createBrowserRouter([
         path:'payment',
         element:<Payment></Payment>
       },
-      
+       {
+          path: 'paymentHistory',
+          element: <PaymentHistory></PaymentHistory>
+        },
       // admin
 
       
