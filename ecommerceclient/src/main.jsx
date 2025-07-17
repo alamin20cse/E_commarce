@@ -22,6 +22,10 @@ import {
 } from '@tanstack/react-query'
 import AllUsers from './Shared/Dashboard/Allusers.jsx';
 import Order from './Order/Order.jsx';
+import Cart from './Shared/Dashboard/Cart.jsx';
+import Payment from './Shared/Dashboard/Payment/Payment.jsx';
+import ManageItems from './Shared/Dashboard/ManageItems/ManageItems.jsx';
+import UpdateItem from './Shared/Dashboard/UpdateItem/UpdateItem.jsx';
 
 const queryClient = new QueryClient()
 
@@ -62,6 +66,14 @@ const router = createBrowserRouter([
     children:[
 
       // user
+      {
+        path:'cart',
+        element:<Cart></Cart>
+      },
+      {
+        path:'payment',
+        element:<Payment></Payment>
+      },
       
       // admin
 
@@ -73,13 +85,19 @@ const router = createBrowserRouter([
       {
         path:'users',
         element:<AllUsers></AllUsers>
+      },
+      {
+         path:"manageItems",
+         element:<ManageItems></ManageItems>
+      },
+       {
+        path:'updateItem/:id',
+        element:<UpdateItem></UpdateItem>,
+        loader:({params})=>fetch(`http://127.0.0.1:8000/api/menu/${params.id}`)
+        
       }
       
-      // {
-      //   path:'updateItem/:id',
-      //   element:<UpdateItem></UpdateItem>,
-      //   loader:({params})=>fetch(`http://127.0.0.1:8000/api/menu/${params.id}`)
-      // }
+     
     ]
   }
 ]);
